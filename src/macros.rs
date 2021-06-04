@@ -1,7 +1,9 @@
 macro_rules! repr {
+
     ($uxx:ty, #[$doc:meta] $name:ident { $(#[$attr:meta] $var:ident = $val:expr,)+ }) => {
         #[$doc]
         #[derive(Clone, Copy, Debug, Eq, PartialEq)]
+        #[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
         pub enum $name {
             $(#[$attr] $var = $val,)+
         }

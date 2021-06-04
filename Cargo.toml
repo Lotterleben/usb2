@@ -9,3 +9,10 @@ name = "usb2"
 readme = "README.md"
 repository = "https://github.com/japaric/usb2"
 version = "0.0.1"
+
+[features]
+defmt-impl = ["defmt"]
+
+[dependencies.defmt]
+version = "0.2.2"
+optional = true

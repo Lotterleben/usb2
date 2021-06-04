@@ -1,7 +1,7 @@
 //! USB 2.0 data types and packet parser
 //!
 //! This library does not contain any I/O functionality. If you are looking for a device-side
-//! USB library check out [`usb-device`](https://crates.io/crates/usb-device). 
+//! USB library check out [`usb-device`](https://crates.io/crates/usb-device).
 //!
 //! # References
 //!
@@ -41,6 +41,7 @@ pub mod ia;
 pub mod interface;
 
 /// The state of the USB device
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum State {
     /// The default state
@@ -60,6 +61,7 @@ pub enum State {
 pub type Address = NonZeroU8;
 
 /// Endpoint address
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Endpoint {
     /// Endpoint direction
@@ -76,6 +78,7 @@ impl Endpoint {
 }
 
 /// Direction from the point of view of the host
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum Direction {
     /// Host to Device
@@ -133,6 +136,7 @@ impl Request {
 /// Standard device requests
 ///
 /// See section 9.4 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum StandardRequest {
     /// CLEAR_FEATURE
@@ -189,6 +193,7 @@ pub enum StandardRequest {
 /// GET_DESCRIPTOR descriptor
 ///
 /// See section 9.4.3 and table 9-5 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum GetDescriptor {
     /// Configuration descriptor
@@ -217,6 +222,7 @@ pub enum GetDescriptor {
 /// SET_DESCRIPTOR descriptor
 ///
 /// See section 9.4.8 and table 9-5 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SetDescriptor {
     /// Configuration descriptor
@@ -240,6 +246,7 @@ const MAX_ADDRESS: u16 = 127;
 /// CLEAR_FEATURE feature selector
 ///
 /// See table 9-6 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum ClearFeature {
     /// Disables the device remote wake-up feature
@@ -251,6 +258,7 @@ pub enum ClearFeature {
 /// Argument of the GET_STATUS request
 ///
 /// See section 9.4.5 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum GetStatus {
     /// Device status
@@ -264,6 +272,7 @@ pub enum GetStatus {
 /// SET_FEATURE feature selector
 ///
 /// See table 9-6 of (USB2)
+#[cfg_attr(feature = "defmt-impl", derive(defmt::Format))]
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub enum SetFeature {
     /// Enables the device remote wake-up feature
